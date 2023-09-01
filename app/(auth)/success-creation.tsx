@@ -8,7 +8,7 @@ import icons from "../../constants/icons";
 export default function successfulCreation() {
   const router = useRouter();
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: COLORS.darkBlue }}>
       <Stack.Screen options={{ headerShown: false }} />
       <Image source={icons.tickIcon} style={styles.image} />
       <Text style={styles.header}>Successfully Created Your Account!</Text>
@@ -21,7 +21,7 @@ export default function successfulCreation() {
 
 const styles = StyleSheet.create({
   header: {
-    color: COLORS.black,
+    color: COLORS.white,
     fontFamily: FONT.medium,
     fontSize: 30,
     marginTop: 30,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     fontFamily: FONT.medium,
     fontSize: 20,
-    backgroundColor: COLORS.orange,
+    backgroundColor: COLORS.navy,
     padding: 10,
     borderRadius: 5,
     width: 350,

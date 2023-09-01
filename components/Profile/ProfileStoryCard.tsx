@@ -1,6 +1,7 @@
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
-import React from "react";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+
 import { COLORS } from "../../constants/theme";
+import React from "react";
 import { useRouter } from "expo-router";
 
 const ProfileStoryCard = ({ storySource, storyName }) => {
@@ -9,7 +10,6 @@ const ProfileStoryCard = ({ storySource, storyName }) => {
   return (
     <Pressable
       onPress={() => {
-        // alert("Story Pressed");
         router.push({
           pathname: `/profile/storymodal`,
         });

@@ -1,11 +1,12 @@
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
-import React, { useEffect } from "react";
 import { COLORS, FONT, SIZES } from "../../constants";
-import { LinearGradient } from "expo-linear-gradient";
-import { icons } from "../../constants";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useEffect } from "react";
+import { collection, doc, getDoc } from "firebase/firestore";
+
 import { AuthStore } from "../../store";
-import { getDoc, collection, doc } from "firebase/firestore";
+import { LinearGradient } from "expo-linear-gradient";
 import { database } from "../../FirebaseConfig";
+import { icons } from "../../constants";
 
 const ProfileCard = ({ profilePhoto }) => {
   const [profileData, setProfileData] = React.useState(null);
@@ -31,79 +32,88 @@ const ProfileCard = ({ profilePhoto }) => {
     fetchProfileData();
   }, []);
 
+  const profileDetails = [
+  {
+    header: "Name",
+    content: "Elon Musk",
+  },
+  {
+    header: "Age",
+    content: "49",
+  }, 
+  {
+    header: "Education",
+    content: "University of Pennsylvania",
+  }, {
+    header: "Course",
+    content: "Computer Science",
+  },
+];
+
   return (
-    <LinearGradient
-      colors={["#FDC89B", "#FF8D79"]}
-      start={{ x: 0, y: 1 }}
-      end={{ x: 1, y: 0 }}
-      style={styles.cardContainer}
-    >
-      <View
+    <View
         style={{
-          flexDirection: "column",
-          justifyContent: "center",
+          flexDirection: "row",
+          // justifyContent: "center",
           gap: SIZES.xSmall,
-          height: "100%",
-          width: 160,
+          height: 260,
+          width: 360,
+          backgroundColor: COLORS.lightBlue,
+          borderRadius: 15,
+          padding: 10,
         }}
       >
-        <Image
-          source={{
-            uri: profilePhoto,
-          }}
-          style={{
-            height: 160,
-            width: 160,
-            borderRadius: 1000,
-          }}
-        />
-        <View>
-          <ScrollView horizontal>
+        <View style={{
+            flexDirection: "column",
+            justifyContent: "center",
+            textAlign: "center",
+            gap: 5,
+        }}>
+          <Image
+            source={{
+              uri: "https://static.theceomagazine.net/wp-content/uploads/2018/10/15093202/elon-musk-1100x733.jpg",
+            }}
+            style={{
+              height: 160,
+              width: 160,
+              borderRadius: 1000,
+              border: "3px solid black",
+            }}
+          />
+          <View>
             <Text
               style={{
                 fontFamily: FONT.medium,
                 fontSize: SIZES.medium,
+                justifyContent: "center",
               }}
             >
-              @{profileData?.username}
+              {"Edit"}
             </Text>
-          </ScrollView>
+          </View>
+        </View>
+        <View style={{
+          flexDirection: "column",
+          justifyContent: "center",
+        }}>
+          {profileDetails.map((detail) => (
+          <View>
+            <Text style={{
+                fontFamily: FONT.medium,
+                fontSize: SIZES.medium,
+              }}>
+                {detail.header}
+            </Text>
+            <Text style={{
+                fontFamily: FONT.regular,
+                fontSize: SIZES.medium,
+                maxWidth: 200,
+              }}>
+                {detail.content}
+            </Text>
+          </View>)) }
         </View>
       </View>
-      <View
-        style={{
-          flex: 1,
-          height: "100%",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          gap: 5,
-        }}
-      >
-        <ScrollView>
-          <Text
-            style={{
-              fontFamily: FONT.medium,
-              fontSize: SIZES.medium,
-            }}
-          >
-            {AuthStore.getRawState().user?.displayName}
-          </Text>
-          <Text
-            style={{
-              fontFamily: FONT.medium,
-              fontSize: SIZES.medium,
-            }}
-          >
-            {profileData?.age} y/o
-          </Text>
-          <Text>{profileData?.bio}</Text>
-        </ScrollView>
-        <Image
-          source={icons.editButton}
-          style={{ width: 35, height: 35, alignSelf: "flex-end" }}
-        />
-      </View>
-    </LinearGradient>
   );
 };
 

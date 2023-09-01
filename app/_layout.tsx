@@ -1,8 +1,8 @@
 import { SplashScreen, Stack } from "expo-router";
 
-import { useFonts } from "expo-font";
-import { LogoHeader } from "../components/UI/logos";
 import { COLORS } from "../constants/theme";
+import { LogoHeader } from "../components/UI/logos";
+import { useFonts } from "expo-font";
 
 export default function Layout() {
   const [fontsLoaded] = useFonts({
@@ -23,7 +23,10 @@ export default function Layout() {
       screenOptions={{
         headerShown: true,
         headerTitle: (props) => <LogoHeader />,
-        headerStyle: { backgroundColor: COLORS.bgColor },
+        headerStyle: { backgroundColor: COLORS.navBar },
+        borderWidth: 0,
+        elevation: 0,
+        shadowOpacity: 0,
       }}
     >
       <Stack.Screen name="index" />

@@ -69,6 +69,7 @@ const ChatsPage = () => {
           fontFamily: FONT.medium,
           fontSize: SIZES.xLarge,
           fontWeight: "bold",
+          color: COLORS.white,
         }}
       >
         Chat

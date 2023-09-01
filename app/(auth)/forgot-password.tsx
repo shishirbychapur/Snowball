@@ -13,7 +13,7 @@ export default function forgotPassword() {
   const router = useRouter();
   const emailRef = useRef("");
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: COLORS.darkBlue }}>
       <Stack.Screen options={{ headerShown: false }} />
       <LargerHeader />
       <TouchableOpacity onPress={() => router.replace("/login")}>
@@ -42,8 +42,8 @@ export default function forgotPassword() {
       </TouchableOpacity>
       <TouchableOpacity onPress={() => router.replace("/login")}>
         <Text style={styles.redirect}>
-          Remembered you password?  
-          <Text style={{textDecorationLine: "underline", color: COLORS.black, fontFamily: FONT.medium}}>
+          Remember your password? {' '} 
+          <Text style={{textDecorationLine: "underline", color: COLORS.white, fontFamily: FONT.medium}}>
             Login In 
           </Text>
         </Text>
@@ -55,7 +55,7 @@ export default function forgotPassword() {
 
 const styles = StyleSheet.create({
   header: {
-    color: COLORS.black,
+    color: COLORS.white,
     fontFamily: FONT.medium,
     fontSize: 30,
     marginTop: 30,
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    backgroundColor: COLORS.orange,
+    backgroundColor: COLORS.navy,
     borderRadius: 5,
     fontFamily: FONT.medium,
     color: COLORS.white,

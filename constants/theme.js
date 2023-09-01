@@ -6,13 +6,18 @@ const COLORS = {
   gray2: "#C1C0C8",
   green: "#28CD41",
   orange: "#F64E4E",
-  red: "#FF3B30",
+  red: "#EB6484",
   white: "#F3F4F8",
   lightWhite: "#FAFAFC",
   bgColor: "#F8EDEB",
   bgColor2: "#FED5CC",
   bgColor3: "#FCA2A2",
   black: "#000000",
+  darkBlue: "#0D192A",
+  navy: "#134C80",
+  lightBlue: "#A5C6F8",
+  navBar: "#0F2A52",
+  green: "#4CD091",
 };
 
 const FONT = {

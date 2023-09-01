@@ -64,6 +64,7 @@ const ChatCard = ({
               style={{
                 fontFamily: FONT.bold,
                 fontSize: 20,
+                color: COLORS.white,
               }}
             >
               {name}
@@ -87,15 +88,15 @@ const ChatCard = ({
               </Text>
               <GrayDot />
 
-              {streaks && (
+              {/* {streaks && (
                 <Text style={{ fontSize: 10, fontWeight: "bold" }}>
                   {streaks}🔥
                 </Text>
-              )}
+              )} */}
             </View>
           </View>
         </View>
-        <Image source={icons.cameraIcon} style={{ width: 30, height: 30 }} />
+        {/* <Image source={icons.cameraIcon} style={{ width: 30, height: 30 }} /> */}
       </Pressable>
     </>
   );
@@ -105,13 +106,15 @@ export default ChatCard;
 
 const styles = StyleSheet.create({
   cardContainer: {
-    backgroundColor: "white",
+    backgroundColor: COLORS.navy,
     width: "100%",
     height: 80,
     padding: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    borderRadius: 15,
+    color: COLORS.white,
   },
   iconStyle: { height: 11, width: 10 },
 });

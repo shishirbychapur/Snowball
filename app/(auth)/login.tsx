@@ -1,9 +1,9 @@
 import { AuthStore, appSignIn, isNewUser } from "../../store";
 import { COLORS, FONT } from "../../constants";
 import { SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Stack, useRouter } from "expo-router";
 
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { LargerHeader } from "../../components/UI/logos";
 import Toast from "react-native-toast-message";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -17,13 +17,13 @@ export default function LogIn() {
 
   return (
     <KeyboardAwareScrollView
-      contentContainerStyle={[styles.container, { backgroundColor: "white" }]}
+      contentContainerStyle={[styles.container, { backgroundColor: COLORS.darkBlue }]}
     >
       <Stack.Screen options={{ headerShown: false }} />
       <LargerHeader />
       <Text
         style={{
-          color: COLORS.black,
+          color: COLORS.white,
           fontSize: 26,
           marginBottom: 8,
           fontFamily: FONT.medium,
@@ -99,7 +99,7 @@ export default function LogIn() {
       >
         <Text
           style={{
-            color: COLORS.orange,
+            color: COLORS.navy,
             textAlign: "center",
             fontFamily: FONT.medium,
           }}
@@ -110,7 +110,7 @@ export default function LogIn() {
       <TouchableOpacity onPress={() => router.push("/forgot-password")}>
         <Text
           style={{
-            color: COLORS.black,
+            color: COLORS.white,
             textAlign: "center",
             fontFamily: FONT.regular,
             marginTop: 30,
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   },
   label: {
     marginBottom: 4,
-    color: COLORS.orange,
+    color: COLORS.white,
     fontFamily: FONT.medium,
     fontSize: 17,
   },
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     height: 50,
-    borderColor: COLORS.black,
+    borderColor: COLORS.navy,
     paddingHorizontal: 8,
     paddingVertical: 4,
     marginBottom: 10,
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     borderRadius: 10,
     overflow: "hidden", // For ios, need to set overflow hidden, for borderRadius to work
-    backgroundColor: COLORS.orange,
+    backgroundColor: COLORS.navy,
   },
   createButton: {
     justifyContent: "center",
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: COLORS.orange,
+    borderColor: COLORS.navy,
     overflow: "hidden", // For ios, need to set overflow hidden, for borderRadius to work
     backgroundColor: "transparent",
   },

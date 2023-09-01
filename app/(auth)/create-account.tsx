@@ -3,11 +3,11 @@ import { COLORS, FONT } from "../../constants";
 import { Stack, useRouter } from "expo-router";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { LargerHeader } from "../../components/UI/logos";
 import Toast from "react-native-toast-message";
 import { createAccountErrorToast } from "../../components/UI/toast";
 import { useRef } from "react";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default function CreateAccount() {
   const router = useRouter();
@@ -23,6 +23,7 @@ export default function CreateAccount() {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: COLORS.darkBlue,
       }}
     >
       <Stack.Screen options={{ headerShown: false }} />
@@ -33,11 +34,12 @@ export default function CreateAccount() {
           fontSize: 24,
           marginBottom: 16,
           marginTop: 30,
+          color: COLORS.white,
         }}
       >
         Create Account
       </Text>
-      <Text style={{ fontFamily: FONT.regular, marginBottom: 16 }}>
+      <Text style={{ fontFamily: FONT.regular, marginBottom: 16, color: COLORS.gray }}>
         Please enter your information below
       </Text>
       <View>
@@ -144,7 +146,7 @@ export default function CreateAccount() {
 const styles = StyleSheet.create({
   label: {
     marginBottom: 4,
-    color: COLORS.orange,
+    color: COLORS.white,
     fontFamily: FONT.medium,
   },
   textInput: {
@@ -155,13 +157,14 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     marginBottom: 15,
     height: 40,
+    borderColor: COLORS.navy,
     fontFamily: FONT.regular,
     color: COLORS.gray,
   },
   createButton: {
     fontFamily: FONT.medium,
     margin: 8,
-    backgroundColor: COLORS.orange,
+    backgroundColor: COLORS.navy,
     padding: 8,
     borderRadius: 8,
     width: 250,
@@ -170,6 +173,7 @@ const styles = StyleSheet.create({
   },
   cancelButton: {
     fontFamily: FONT.regular,
+    color: COLORS.white,
     margin: 8,
     padding: 8,
     borderRadius: 8,

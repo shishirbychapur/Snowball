@@ -1,16 +1,18 @@
 import {
+  Image,
+  Pressable,
+  ScrollView,
   StyleSheet,
   Text,
-  View,
-  ScrollView,
-  Pressable,
-  TouchableOpacity,
-  Image,
   TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import React from "react";
 import { container, headings } from "../styles/styled";
+
 import { COLORS } from "../constants";
+import React from "react";
+
 // import { Pressable } from "react-native-gesture-handler";
 
 const EvaluationPage = () => {

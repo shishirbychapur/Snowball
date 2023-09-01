@@ -1,63 +1,39 @@
 import { COLORS, FONT, SIZES } from "../../../constants";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import { auth, database } from "../../../FirebaseConfig";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
 
+import ChatsSearchBar from "../../../components/Chats/ChatsSearchBar";
 import Styled from "../../../styles/container";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import TrackerCard from "../../../components/Tracker/TrackerCard";
-import getMatchedUserInfo from "../../../lib/getMatchedUserInfo";
 import { useRouter } from "expo-router";
 
 const TrackerPage = () => {
   const router = useRouter();
-  const [goals, setGoals] = useState([]);
 
-  useEffect(() => {
-    const colRef = collection(database, "users", auth.currentUser.uid, "goals");
-    const unsubscribe = onSnapshot(colRef, (querySnapshot) => {
-      const newData = querySnapshot.docs.map((doc) => doc.data());
-      setGoals(newData);
-    });
+  const mentors = [
+    {
+      name: "Cleon",
+      company: "Microsoft",
+      contract: "3 Months",
+      session: "2/4",
+      icon: "https://media.licdn.com/dms/image/C5603AQHHUuOSlRVA1w/profile-displayphoto-shrink_800_800/0/1579726624860?e=2147483647&v=beta&t=O-WfKPPz1T6C0bYrq-LG62s2R1Vmnqv2F78MAAOOMDQ",
+    },
+    {
+      name: "Ryann",
+      company: "Google",
+      contract: "6 Months",
+      session: "1/4",
+      icon: "https://static.toiimg.com/photo/msid-73204368/73204368.jpg",
+    },
+    {
+      name: "Evan",
+      company: "Meta",
+      contract: "1 Year",
+      session: "3/4",
+      icon: "https://akm-img-a-in.tosshub.com/businesstoday/images/story/202304/f7j6hnt4brnuxnqb3ose6lxafm-sixteen_nine.jpg?size=948:533",
+    },
+  ]
 
-    return () => unsubscribe();
-  }, []);
-
-  // useEffect(() => {
-  //   // const colRef = collection(database, "userdetails");
-  //   const colRef = collection(database, "users");
-  //   const unsubscribe = onSnapshot(colRef, (querySnapshot) => {
-  //     const newData = querySnapshot.docs.map((doc) => doc.data());
-  //     setData(newData);
-  //   });
-
-  //   // The returned function will be called when the component unmounts
-  //   return () => unsubscribe();
-  // }, []); 
-
-  // const [matches, setMatches] = useState([]);
-
-  // useEffect(
-  //   () =>
-  //     onSnapshot(
-  //       query(
-  //         collection(database, "matches"),
-  //         where("usersMatched", "array-contains", auth.currentUser.uid)
-  //       ),
-  //       (snapshot) => {
-  //         setMatches(
-  //           snapshot.docs.map((doc) => ({
-  //             id: doc.id,
-  //             ...doc.data(),
-  //           }))
-  //         );
-  //       }
-  //     ),
-  //   []
-  // );
-
-  // console.log(matches);
 
   return (
     <ScrollView
@@ -70,33 +46,31 @@ const TrackerPage = () => {
           fontSize: 24,
           fontWeight: "bold",
           textAlign: "center",
+          color: COLORS.white,
         }}
       >
-        Track your Goals
+        Find a Mentor
       </Text>
-      {goals.map((item, index) => {
-        const conversationId = item.id;
-        return (
-          <TrackerCard
-            id={conversationId}
-            key={index}
-            profilePhoto={item.pactAvatar}
-            pactName={item.pactName}
-            milestoneCount={item.milestoneCount} // Will need more time to figure out how to get this
-            category={item.category}
-            subcategory={item.subcategory}
-            evaluationRequired={true}
-          />
-        );
-      })}
-      <TouchableOpacity
-        onPress={() => router.push("/tracker/CreateGoal")}
-        style={styles.add}
-      >
-        <Text style={{ fontFamily: FONT.bold, fontWeight: "bold" }}>
-          Add Goal
-        </Text>
-      </TouchableOpacity>
+      <ChatsSearchBar filterText={""} setFilterText={""}/>
+      {mentors.map(mentor => (
+        <View style={{
+          flexDirection: "row",
+          alignItems: "center",
+          border: "1px solid black",
+          backgroundColor: COLORS.navy,
+          width: 350,
+          borderRadius: 10,
+          padding: 10,
+        }}>
+        <Image source={{uri: mentor.icon}} style={{width: 80, height: 80, borderRadius: 100 }} />
+        <View style={{ marginLeft: 10 }}>
+        <Text style={{fontFamily: FONT.medium, color: COLORS.white }}>{mentor.name}</Text>
+        <Text style={{fontFamily: FONT.regular, color: COLORS.white }}>{mentor.company}</Text>
+        <Text style={{fontFamily: FONT.regular, color: COLORS.white }}>{mentor.contract}</Text>
+        <Text style={{fontFamily: FONT.regular, color: COLORS.white }}>{mentor.session}</Text>
+        </View>
+      </View>
+      ))}
     </ScrollView>
   );
 };

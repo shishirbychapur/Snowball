@@ -1,7 +1,8 @@
-import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
-import React from "react";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+
 import { COLORS } from "../../constants/theme";
 import ProfileStoryCard from "./ProfileStoryCard";
+import React from "react";
 
 const ProfileStoryCards = () => {
   return (
@@ -47,6 +48,6 @@ const styles = StyleSheet.create({
     padding: 15,
     flexDirection: "row",
     borderRadius: 20,
-    backgroundColor: COLORS.bgColor2,
+    backgroundColor: COLORS.lightBlue,
   },
 });

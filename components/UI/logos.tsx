@@ -53,7 +53,7 @@ const LogoHeader = () => {
   return (
     <Image
       source={images.logoHeader}
-      style={{ height: 40, width: 100, resizeMode: "contain" }}
+      style={{ height: 70, width: 360, resizeMode: "contain" }}
     />
   );
 };

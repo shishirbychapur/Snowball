@@ -8,7 +8,7 @@ const TabsLayout = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: COLORS.bgColor,
+          backgroundColor: COLORS.navBar,
         },
       }}
       initialRouteName="home"

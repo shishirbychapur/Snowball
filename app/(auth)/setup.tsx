@@ -22,17 +22,10 @@ import { Toast } from "react-native-toast-message/lib/src/Toast";
 import { invalidSetupDetails } from "../../components/UI/toast";
 import { setupDetails } from "../../store";
 
-// import { Picker } from "@react-native-picker/picker";
-
-
-
-
 const Setup = () => {
   const router = useRouter();
   const username = useRef("");
   const age = useRef("");
-  // const [category, setCategory] = useState("");
-  // const [currentInterest, setCurrentInterest] = useState("");
   const bio = useRef("");
 
   const createAccount = async () => {
@@ -63,6 +56,7 @@ const Setup = () => {
         flexGrow: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: COLORS.darkBlue,
       }}
     >
       <Stack.Screen options={{ headerShown: false }} />
@@ -112,37 +106,6 @@ const Setup = () => {
           autoComplete="off"
         />
       </View>
-      {/* <View>
-        <Text style={styles.label}>Category</Text>
-        <Picker
-          selectedValue={category}
-          onValueChange={(itemValue, itemIndex) => setCategory(itemValue)}
-          style={styles.textInput}
-        >
-          <Picker.Item label="Select" value="" />
-          <Picker.Item label="Sports" value="Sports" />
-          <Picker.Item label="Academics" value="Academics" />
-          <Picker.Item label="Instruments" value="Instruments" />
-        </Picker>
-      </View>
-      <View>
-        <Text style={styles.label}>Current Interest</Text>
-        <Picker
-          selectedValue={currentInterest}
-          onValueChange={(itemValue, itemIndex) =>
-            setCurrentInterest(itemValue)
-          }
-          style={styles.textInput}
-        >
-          {category === "Sports"
-            ? SportsPicker
-            : category === "Academics"
-            ? AcademicsPicker
-            : category === "Instruments"
-            ? InstrumentsPicker
-            : EmptyPicker}
-        </Picker>
-      </View> */}
       <TouchableOpacity onPress={createAccount}>
         <Text style={styles.button}>Set up your details!</Text>
       </TouchableOpacity>
@@ -165,18 +128,19 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: FONT.medium,
-    color: COLORS.orange,
+    color: COLORS.navy,
     marginBottom: 5,
   },
   header: {
     fontFamily: FONT.medium,
     fontSize: 24,
     marginTop: 20,
+    color: COLORS.white,
   },
   button: {
     marginTop: 20,
     fontFamily: FONT.medium,
-    backgroundColor: COLORS.orange,
+    backgroundColor: COLORS.navy,
     padding: 10,
     borderRadius: 5,
     color: COLORS.white,

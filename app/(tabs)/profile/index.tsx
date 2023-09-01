@@ -1,46 +1,55 @@
-import { Redirect, Stack, useRouter } from "expo-router";
 import {
   Alert,
   Button,
+  Image,
   Pressable,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
-  ScrollView,
-  Image,
 } from "react-native";
 import { AuthStore, appSignOut } from "../../../store";
+import { Redirect, Stack, useRouter } from "expo-router";
+
+import { COLORS } from "../../../constants/theme";
 import { FONT } from "../../../constants";
-import Styled from "../../../styles/container";
 import ProfileCard from "../../../components/Profile/ProfileCard";
-import HorizontalRule from "../../../components/General/HorizontalRule";
-import ProfileStoryCards from "../../../components/Profile/ProfileStoryCards";
+import ProfileCompanyCard from "../../../components/Profile/ProfileCompanyCard";
+import ProfileInterestedCard from "../../../components/Profile/ProfileInterestedCard";
+import Styled from "../../../styles/container";
 
 const ProfilePage = () => {
   const router = useRouter();
   return (
-    // <ScrollView
-    //   contentContainerStyle={[
-    //     Styled.MainScrollableCanvas,
-    //     { alignItems: "flex-start" },
-    //   ]}
-    // >
     <ScrollView
       style={Styled.MainScrollableCanvas}
-      contentContainerStyle={{ alignItems: "flex-start", gap: 5 }}
+      contentContainerStyle={{ alignItems: "flex-start", gap: 5, }}
     >
       <ProfileCard profilePhoto={AuthStore.getRawState().user?.photoURL} />
       <Text
         style={{
-          fontFamily: FONT.bold,
-          fontSize: 20,
-          fontWeight: "800",
+          fontFamily: FONT.medium,
+          fontSize: 18,
+          fontWeight: "700",
+          color: COLORS.white,
         }}
       >
-        Past Achievements
+        Specialisations
       </Text>
-      <ProfileStoryCards />
-      <Text style={{ fontFamily: FONT.bold }}>
+      {/* <ProfileStoryCards /> */}
+      <ProfileInterestedCard />
+      <Text
+        style={{
+          fontFamily: FONT.medium,
+          fontSize: 18,
+          fontWeight: "700",
+          color: COLORS.white,
+        }}
+      >
+        Companies Interested In
+      </Text>
+      <ProfileCompanyCard />
+      {/* <Text style={{ fontFamily: FONT.bold }}>
         {AuthStore.getRawState().user?.email}
       </Text>
       <Text style={{ fontFamily: FONT.bold }}>
@@ -48,7 +57,7 @@ const ProfilePage = () => {
       </Text>
       <Text style={{ fontFamily: FONT.bold }}>
         {AuthStore.getRawState().user?.uid}
-      </Text>
+      </Text> */}
       <Button
         onPress={async () => {
           const resp = await appSignOut();
@@ -62,7 +71,7 @@ const ProfilePage = () => {
         title="LOGOUT"
       />
 
-      <Pressable
+      {/* <Pressable
         onPress={() => {
           router.push("/(tabs)/profile/storymodal");
           // alert("pressed");
@@ -78,16 +87,16 @@ const ProfilePage = () => {
             paddingVertical: 6,
           },
         ]}
-      >
-        <Text
+      > */}
+        {/* <Text
           style={{
             fontFamily: FONT.bold,
-            color: "white",
+            color: COLORS.white,
           }}
         >
           Button
-        </Text>
-      </Pressable>
+        </Text> */}
+      {/* </Pressable> */}
     </ScrollView>
   );
 };

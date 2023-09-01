@@ -1,7 +1,7 @@
-import { View, Text, StyleSheet, Image, TextInput } from "react-native";
-import React, { useRef, useState } from "react";
 import { COLORS, FONT, SIZES, icons } from "../../constants";
-import { set } from "react-native-reanimated";
+import { Image, StyleSheet, Text, TextInput, View } from "react-native";
+
+import React from "react";
 
 const ChatsSearchBar = ({ filterText, setFilterText }) => {
   return (
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     borderRadius: 100,
     borderWidth: 1,
+    backgroundColor: COLORS.lightBlue,
     gap: 10,
   },
 });
